@@ -33,7 +33,7 @@ while(it<10)
                     if(p2<PAR)
                         while(1)
                             ep=randi([-10,10]); % generating epsilon
-                            if(col_in_subset + ep>0 || col_in_subset + ep<col) % checking whether it is within bounds
+                            if(col_in_subset + ep>0 && col_in_subset + ep<col) % checking whether it is within bounds
                                 break;
                             end
                         end
