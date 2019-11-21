@@ -22,7 +22,7 @@ while(it<10)
             if(HM(i,j)==1)
                 p1=rand;
                 if(p1<HMCR)
-                    while(1) % selecting a feature from any subset in the Harmony memory
+                    while(1) % selecting a feature from the current subset in the Harmony memory
                         %row_in_subset=randi([1,HMS]);
                         col_in_subset=randi([1,col-1]);
                         if(HM(i,col_in_subset)==1)
