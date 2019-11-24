@@ -38,6 +38,8 @@ while(it<10)
                             end
                         end
                         ran(:,col_in_subset+ep)=1; % pitch adjusted feature  
+                    else
+                        ran(:,col_in_subset)=1;
                     end
                 else
                     feat_in_main=randi([1,col-1]); %randomly selecting a feature from the main feature set
