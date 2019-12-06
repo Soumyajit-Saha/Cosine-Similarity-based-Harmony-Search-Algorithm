@@ -2,14 +2,15 @@ HM=X;
 HMCR=0.7;
 PAR=0.3;
 it=1;
-HMS=10;
-acc=zeros(10,1);
-for hi=1:10
+HMS=15;
+acc=zeros(15,1);
+for hi=1:15
+    %acc(hi,:)=rand;
     acc(hi,:)=accuracy(HM(hi,:),m1,m);
     display(acc(hi,:));
 end
 
-while(it<10)
+while(it<20)
     display(it);
     i=1;
     while(i<HMS+1)
@@ -22,22 +23,33 @@ while(it<10)
             if(HM(i,j)==1)
                 p1=rand;
                 if(p1<HMCR)
-                    while(1) % selecting a feature from the current subset in the Harmony memory
-                        %row_in_subset=randi([1,HMS]);
-                        col_in_subset=randi([1,col-1]);
-                        if(HM(i,col_in_subset)==1)
-                            break;
-                        end
-                    end
+%                     while(1) % selecting a feature from any subset in the Harmony memory
+%                         %row_in_subset=randi([1,10]);
+%                         col_in_subset=randi([1,col-1]);
+%                         if(HM(i,col_in_subset)==1)
+%                             break;
+%                         end
+%                     end
+                    col_in_subset=j;
                     p2=rand;
                     if(p2<PAR)
                         while(1)
-                            ep=randi([-10,10]); % generating epsilon
-                            if(col_in_subset + ep>0 && col_in_subset + ep<col) % checking whether it is within bounds
+                            ep=rand; % generating epsilon
+                            t=1;
+                            flag=0;
+                            while(t<11)
+                                rand_feat=randi([1,col-1]);
+                                if(ep>sim_mat(j,rand_feat))
+                                    flag=1;
+                                    break;
+                                end
+                                t=t+1;
+                            end 
+                            if(flag==1)
                                 break;
                             end
                         end
-                        ran(:,col_in_subset+ep)=1; % pitch adjusted feature  
+                        ran(:,rand_feat)=1;
                     else
                         ran(:,col_in_subset)=1;
                     end
@@ -48,16 +60,19 @@ while(it<10)
             end
             j=j+1;
         end
-        score=accuracy(ran,m1,m);
-        if(acc(i,:)<score) %checking whether the new feature vector is better than the subset
-            HM(i,:)=ran;
-            size_arr(i,:)=int8(sum(ran(:)==1)/(col-1)*100);
-            acc(i,:)=score;
-            display('replaced');
-            display(acc(i,:));
+        if(int8(sum(ran(:)==1)/(col-1)*100)>30)   
+            score=accuracy(ran,m1,m);
+            %score=rand;
+            if(acc(i,:)<score) %checking whether the new feature vector is better than the subset
+                HM(i,:)=ran;
+                size_arr(i,:)=int8(sum(ran(:)==1)/(col-1)*100);
+                acc(i,:)=score;
+                display('replaced');
+                display(acc(i,:));
+            end
         end
        i=i+1;
     end
     it=it+1;
 end
-disp('ENDED');                            
+disp('ENDED');                       
