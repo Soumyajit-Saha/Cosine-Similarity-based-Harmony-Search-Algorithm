@@ -1,4 +1,4 @@
-function [ score1,score2,score3 ] = accuracy( X,m1,m,row,col )
+function [ score ] = feasibility_check( X,m1,m,row,col )
 %UNTITLED4 Summary of this function goes here
 %   Detailed explanation goes here
     f1=fopen('feat.csv','w');
@@ -14,7 +14,7 @@ function [ score1,score2,score3 ] = accuracy( X,m1,m,row,col )
     fclose(f1);
     display('feature file created');
     %score=train_trainlabel('feat.csv');
-    [score1,score2,score3]=correlation('feat.csv');
+    score=correlation('feat.csv');
 
 
 
