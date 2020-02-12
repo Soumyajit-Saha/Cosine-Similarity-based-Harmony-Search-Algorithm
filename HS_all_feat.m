@@ -6,7 +6,7 @@ HMS=15;
 acc=zeros(15,1);
 for hi=1:15
     %acc(hi,:)=rand;
-    acc(hi,:)=accuracy(HM(hi,:),m1,m);
+    acc(hi,:)=feasibility_check(HM(hi,:),m1,m);
     display(acc(hi,:));
 end
 
@@ -59,9 +59,8 @@ while(it<20)
                 end    
             end
             j=j+1;
-        end
-        if(int8(sum(ran(:)==1)/(col-1)*100)>30)   
-            score=accuracy(ran,m1,m);
+        end  
+            score=feasibility_check(ran,m1,m);
             %score=rand;
             if(acc(i,:)<score) %checking whether the new feature vector is better than the subset
                 HM(i,:)=ran;
@@ -70,7 +69,6 @@ while(it<20)
                 display('replaced');
                 display(acc(i,:));
             end
-        end
        i=i+1;
     end
     it=it+1;
