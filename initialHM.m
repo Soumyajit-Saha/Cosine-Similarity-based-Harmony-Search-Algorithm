@@ -1,10 +1,10 @@
-m=textread('C:/talip-csv-10000+15000/transition_global_local_concentric_topological_unit_data_64_normalized_45_rotation.csv','%s');
-m=split(m,',');
-[row,col]=size(m);
-m1=m(2:row,col);
-m1=m1';
-m=m(2:row,1:col-1);
-m=str2double(m);
+%m=textread('C:/talip-csv-10000+15000/transition_global_local_concentric_topological_unit_data_64_normalized_45_rotation.csv','%s');
+%m=split(m,',');
+%[row,col]=size(m);
+%m1=m(2:row,col);
+%m1=m1';
+%m=m(2:row,1:col-1);
+%m=str2double(m);
 X=zeros(10,col-1);
 size_arr=zeros(10,1);
 it=1;
