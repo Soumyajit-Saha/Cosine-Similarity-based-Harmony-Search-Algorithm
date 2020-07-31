@@ -60,7 +60,7 @@ while(it<20)
             end
             j=j+1;
         end  
-            score=feasibility_check(ran,m1,m);
+            score=feasibility_check(ran,m1,m,row,col);
             %score=rand;
             if(acc(i,:)<score) %checking whether the new feature vector is better than the subset
                 HM(i,:)=ran;
