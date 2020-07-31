@@ -72,7 +72,7 @@ ch=m1(:,1);
              i=i+1;
          end
     end
-% m=X_train;
+ m=X_train;
 
  c=1;
  for k=1:col-1
