@@ -73,7 +73,7 @@ ch=m1(:,1);
          end
     end
  m=X_train;
-
+ m1=Y_train
  c=1;
  for k=1:col-1
      max_value=max(X_train(:,k));
